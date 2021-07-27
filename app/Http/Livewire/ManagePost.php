@@ -3,10 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Post;
+use Livewire\Component;
 
-class ManagePost extends Slideover
+class ManagePost extends Component
 {
-    public $name = 'manage.post';
+    use HasSlideOver;
 
     public $title;
     public $description;
@@ -27,6 +28,6 @@ class ManagePost extends Slideover
             'description' => $this->description,
         ]);
 
-        $this->reset('title', 'description', 'show');
+        $this->reset('title', 'description');
     }
 }
