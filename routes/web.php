@@ -21,3 +21,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::view('slideover', 'slideover');
 });
+
+Route::get('assets/{file}', \App\Http\Controllers\AssetController::class)->name('assets');
