@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
-                <a href="{{ route('assets', 'pinetco.png') }}">{{ route('assets', 'pinetco.png') }}</a>
+                <img src="{{ route('assets', 'pinetco.png') }}" alt="">
             </div>
         </div>
     </div>
