@@ -7,27 +7,36 @@ use Livewire\Component;
 
 class ManagePost extends Component
 {
-    use HasSlideOver;
+    use ManageModel;
 
-    public $title;
-    public $description;
+    public static $modelName = Post::class;
+
+    protected $rules = [
+        'model.title' => 'required|string|min:6',
+        'model.description' => 'required|string|max:500',
+    ];
 
     public function render()
     {
         return view('livewire.manage-post');
     }
 
-    public function save()
+    public function store()
     {
-        $this->validate([
-            'title' => 'required',
-        ]);
+        $this->validate();
 
-        Post::create([
-            'title' => $this->title,
-            'description' => $this->description,
-        ]);
+        $this->model->save();
+    }
 
-        $this->reset('title', 'description');
+    public function update()
+    {
+        $this->validate();
+
+        $this->model->save();
+    }
+
+    public function destroy()
+    {
+        $this->model->delete();
     }
 }
