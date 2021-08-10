@@ -6,21 +6,23 @@ trait HasSlideOver
 {
     public $show = false;
 
-    protected function getListeners()
+    public function hydrateHasSlideOver()
     {
-        return array_merge($this->listeners, [
-            self::getSlideoverEventName() => 'toggle'
-        ]);
-    }
+        $className = class_basename(static::class);
 
-    public static function getSlideoverEventName()
-    {
-        return class_basename(static::class) . '.slideover.toggle';
+        $this->listeners = array_merge($this->listeners, [
+            "$className.slideover.toggle" => 'toggle'
+        ]);
     }
 
     public function toggle()
     {
         $this->show = !$this->show;
+    }
+
+    public function open()
+    {
+        $this->show = true;
     }
 
     public function close()
